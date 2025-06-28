@@ -1,20 +1,335 @@
-
-(footprint LEDRD254W57D500H1070 (layer F.Cu) (tedit 685C19CA)
-  (descr "")
-  (fp_text reference REF** (at 0.04 -3.708 0) (layer F.SilkS)
-    (effects (font (size 0.8 0.8) (thickness 0.15)))
-  )
-  (fp_text value LEDRD254W57D500H1070 (at 7.66 3.708 0) (layer F.Fab)
-    (effects (font (size 0.8 0.8) (thickness 0.15)))
-  )
-  (pad C thru_hole rect (at -1.27 0.0) (size 1.815 1.815) (drill 1.21) (layers *.Cu *.Mask) (solder_mask_margin 0.102))
-  (pad A thru_hole circle (at 1.27 0.0) (size 1.815 1.815) (drill 1.21) (layers *.Cu *.Mask) (solder_mask_margin 0.102))
-  (fp_circle (center -3.2 0.0) (end -3.1 0.0) (layer F.SilkS) (width 0.2))
-  (fp_circle (center -3.2 0.0) (end -3.1 0.0) (layer F.Fab) (width 0.2))
-  (fp_line (start -2.5 -1.566) (end -2.5 1.566) (layer F.Fab) (width 0.127))
-  (fp_arc (start 0.00612387247829 0.0) (end -2.5 1.566) (angle -296.0) (layer F.Fab) (width 0.127))
-  (fp_line (start -2.5 -1.566) (end -2.5 1.566) (layer F.SilkS) (width 0.127))
-  (fp_arc (start 0.00612387247829 0.0) (end -2.5 1.566) (angle -296.0) (layer F.SilkS) (width 0.127))
-  (fp_line (start -2.75 -1.64) (end -2.75 1.64) (layer F.CrtYd) (width 0.05))
-  (fp_arc (start 0.00659216453786 0.0) (end -2.75 1.64) (angle -298.5) (layer F.CrtYd) (width 0.05))
+(footprint "LEDRD254W57D500H1070"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "D1"
+		(at 0.04 -3.708 0)
+		(layer "F.SilkS")
+		(uuid "359cf924-b03c-42e7-95f3-82db0f938e07")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "L08R5000Q1"
+		(at 7.66 3.708 0)
+		(layer "F.Fab")
+		(uuid "deae8cfd-c7fc-4600-9d06-1470e25fa349")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" "general:LEDRD254W57D500H1070"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0191aa87-8d4b-4aae-aa8c-2f268b8795f1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bddc00e6-48e0-4e15-aace-039a511e5029")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "78e3d1ec-1c63-4e3f-91fc-c9f7efd59e1b")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MF" "LED Technology"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "435084d9-4405-479a-98e1-87f32581c57e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MAXIMUM_PACKAGE_HEIGHT" "10.7mm"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ac297c82-2b49-4a41-b029-60f1f525919a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Package" "None"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "624f59b4-d5c7-4867-a4c5-d3182fcfcf98")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Price" "None"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7ba61904-12e0-43a4-bc99-2177421f86fa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Check_prices" "https://www.snapeda.com/parts/L08R5000Q1/LED+Technology/view-part/?ref=eda"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "452f5a58-9ae9-4b3f-95f2-95b6b5e8bfcb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "STANDARD" "IPC-7351B"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "42903dca-5c58-4f85-8df1-8f2fb3b6e8ee")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "PARTREV" "NA"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4fd66b89-6ff4-4ffd-82aa-c74551c7aa8b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "SnapEDA_Link" "https://www.snapeda.com/parts/L08R5000Q1/LED+Technology/view-part/?ref=snap"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "709c2b1a-235b-410e-aa21-f706dde09ad2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MP" "L08R5000Q1"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0771f647-8125-4cc0-8cc6-c0678486ff12")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description_1" "\n                        \n                            LED, 5MM, ORANGE; LED / Lamp Size: 5mm / T-1 3/4; LED Colour: Orange; Typ Luminous Intensity: 4.3mcd; Viewing Angle: ...\n                        \n"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0f269cef-db3c-4b1f-a7f7-51e3c3ff1468")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Availability" "Not in stock"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8844aaaa-dc2e-4c34-b2ca-0cafe959146b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "MANUFACTURER" "LED TECHNOLOGY"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2b331016-e9fc-4497-9764-4dbc505dabe3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -2.5 -1.566)
+		(end -2.5 1.566)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "784a8336-bffb-41f2-ac38-feca5b13d7ad")
+	)
+	(fp_arc
+		(start -2.5 -1.566)
+		(mid 2.961291 0)
+		(end -2.5 1.566)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "9d9a568a-38c9-4582-92c2-4f1e2cbb30f4")
+	)
+	(fp_circle
+		(center -3.2 0)
+		(end -3.1 0)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "930b0f30-82bf-4e43-8b94-1cbeb3eb9cc6")
+	)
+	(fp_line
+		(start -2.75 -1.64)
+		(end -2.75 1.64)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "294edfff-6937-452f-84b4-cd5640d76d6e")
+	)
+	(fp_arc
+		(start -2.75 -1.64)
+		(mid 3.214145 0)
+		(end -2.75 1.64)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "ce16c41a-6156-47c5-988c-dc3a383260c6")
+	)
+	(fp_line
+		(start -2.5 -1.566)
+		(end -2.5 1.566)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "1d4aba33-d21e-4674-982c-0e1b4cc95a1c")
+	)
+	(fp_arc
+		(start -2.5 -1.566)
+		(mid 2.961291 0)
+		(end -2.5 1.566)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "fa960720-7890-411d-aca8-b9b5bf5bccfd")
+	)
+	(fp_circle
+		(center -3.2 0)
+		(end -3.1 0)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.Fab")
+		(uuid "6f5fd6c5-fc4a-4b1a-9563-f3fdcb2ed526")
+	)
+	(pad "A" thru_hole circle
+		(at 1.27 0)
+		(size 1.815 1.815)
+		(drill 1.21)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "848b4b31-4e74-4832-9e08-6beb17587e8b")
+	)
+	(pad "C" thru_hole rect
+		(at -1.27 0)
+		(size 1.815 1.815)
+		(drill 1.21)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "3d4e8f29-49f0-4f7e-906f-ad2420e485bc")
+	)
+	(model "${KIPRJMOD}/3d/led.STEP"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
 )
