@@ -34,7 +34,7 @@ void loop() {
   if (digitalRead(BUT1) == HIGH){
     unsigned long pressedTime = millis();
     int currentLed = 0;
-    while (digitalRead(BUT1) == HIGH){
+    while (digitalRead(BUT2) == HIGH){
       if (millis() - pressedTime >= 750){
         if (currentLed > 3){
           ledsOff();
@@ -47,7 +47,7 @@ void loop() {
       }
     }
   }
-  if (digitalRead(BUT2) == HIGH){
+  if (digitalRead(BUT4) == HIGH){
     unsigned long pressedTime = millis();
     int currentLed = 0;
     while (digitalRead(BUT2) == HIGH){
@@ -63,7 +63,7 @@ void loop() {
       }
     }
   }
-  if (digitalRead(BUT3) == HIGH){
+  if (digitalRead(BUT1) == HIGH){
     unsigned long pressedTime = millis();
     int currentLed = 0;
     while (digitalRead(BUT3) == HIGH){
@@ -90,19 +90,25 @@ void ledsOff() {
 
 void reaction() {
   randomSeed(analogRead(A2));
-  int randPin = random(4);
-  int randTime = random(500,5000);
-  delay(randTime);
+  int randPin;
+  int randTime;
   digitalWrite(leds[randPin], HIGH);
-  long startTime = millis(); // what time did the led turn on?
-  bool pressed = false;
-  while (abs(millis()-startTime) > 10000)){
-    for (int i=0;i<4;i++){
-      if (digitalRead(buttons[i]) == HIGH){ // are one of the buttons pressed
-        break; // exit the for loop
+  long startTime; // what time did the led turn on?
+  for (int i = 0; i < 5; i++){ // repeat 5 times
+    randPin = random(4);
+    startTime = millis();
+    randTime = random(500,5000);
+    delay(randTime);
+    while (abs(millis()-startTime) > 10000)){
+      for (int i=0;i<4;i++){
+        if (digitalRead(buttons[i]) == HIGH){ // are one of the buttons pressed
+          break; // exit the for loop
+        }
       }
     }
+    delay(randTime);
   }
+
   digitalWrite(leds[randPin], LOW);
 }
 
