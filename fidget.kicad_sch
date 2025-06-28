@@ -2100,7 +2100,7 @@
 				)
 			)
 		)
-		(property "Footprint" "general:LEDRD254W57D500H1070"
+		(property "Footprint" "general:LEDRD254W57D500H1070_3d"
 			(at 170.18 110.49 0)
 			(effects
 				(font
@@ -2289,7 +2289,7 @@
 				)
 			)
 		)
-		(property "Footprint" "general:LEDRD254W57D500H1070"
+		(property "Footprint" "general:LEDRD254W57D500H1070_3d"
 			(at 214.63 110.49 0)
 			(effects
 				(font
@@ -3115,7 +3115,7 @@
 				)
 			)
 		)
-		(property "Footprint" "general:LEDRD254W57D500H1070"
+		(property "Footprint" "general:LEDRD254W57D500H1070_3d"
 			(at 190.5 110.49 0)
 			(effects
 				(font
@@ -3510,7 +3510,7 @@
 				)
 			)
 		)
-		(property "Footprint" "general:LEDRD254W57D500H1070"
+		(property "Footprint" "general:LEDRD254W57D500H1070_3d"
 			(at 243.84 106.68 0)
 			(effects
 				(font
