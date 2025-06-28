@@ -1,4 +1,5 @@
 # Treeboard
+![](https://hackatime-badge.hackclub.com/U092DB4LGMP/fidget) <br/>
 A PCB that you can use to play minigames with 4 LEDs, 4 Cherry MX switches and a XIAO RP2040. 
 
 ## Game Modes
@@ -30,10 +31,13 @@ To program the XIAO RP2040, follow [this guide](https://wiki.seeedstudio.com/XIA
 
 ## PCB
 <img src="/img/PCB.png" alt="PCB Image" width="600"/>
-<img src="/img/3d.png" alt="3D PCB Image" width="600"/>
+<img src="/img/3d_back.png" alt="Front 3D PCB Image" width="300"/>
+<img src="/img/3d_front.png" alt="Back 3D PCB Image" width="600"/>
 
 ## BOM
 * 4 Cherry MX switches
 * 4 LEDs
 * 4 Resistors
 * 1 XIAO RP2040
+
+made by ```@obob``` on the Hack Club Slack for the Pathfinder YSWS!
