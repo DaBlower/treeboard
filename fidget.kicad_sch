@@ -1549,28 +1549,20 @@
 		(uuid "fa2bdd02-8269-4b37-8616-00b59ab775d0")
 	)
 	(no_connect
-		(at 140.97 105.41)
-		(uuid "19384276-cea3-45a1-bf85-19e4db3961db")
+		(at 140.97 109.22)
+		(uuid "09da81d1-66f0-4909-ba88-1742282939df")
+	)
+	(no_connect
+		(at 105.41 97.79)
+		(uuid "124d1a5f-dba3-4da6-a8b1-95d9eb57f520")
+	)
+	(no_connect
+		(at 140.97 113.03)
+		(uuid "204c89eb-1762-4334-a110-9716425dc6be")
 	)
 	(no_connect
 		(at 140.97 90.17)
 		(uuid "32fa5284-01ce-4de1-9a2e-e5bc69e748fa")
-	)
-	(no_connect
-		(at 140.97 113.03)
-		(uuid "4d00bf4e-90e8-48d8-a3c7-9b57ae1a7efb")
-	)
-	(no_connect
-		(at 140.97 109.22)
-		(uuid "4e8c7d7b-d167-4cfe-8461-48f3327438bd")
-	)
-	(no_connect
-		(at 140.97 101.6)
-		(uuid "72093965-0244-4ae1-ad60-c6ad681fc7ac")
-	)
-	(no_connect
-		(at 105.41 113.03)
-		(uuid "842c88ca-972b-45e7-be40-717b62178ae1")
 	)
 	(no_connect
 		(at 140.97 97.79)
@@ -1625,6 +1617,28 @@
 			(type default)
 		)
 		(uuid "f7ada642-aaa0-4676-8525-64c7ffd03c60")
+	)
+	(global_label "led3"
+		(shape input)
+		(at 105.41 113.03 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "09475799-e467-4821-bad6-36055c838134")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 98.3125 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
 	)
 	(global_label "led1"
 		(shape input)
@@ -1804,22 +1818,22 @@
 	)
 	(global_label "button3"
 		(shape input)
-		(at 105.41 97.79 180)
+		(at 140.97 101.6 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
-		(uuid "8adb9f0f-b05a-478b-a7de-56b61fa1fb17")
+		(uuid "81fda2a4-0343-4168-90eb-0efa9a037779")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 95.1679 97.79 0)
+			(at 151.2121 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -1868,7 +1882,7 @@
 			)
 		)
 	)
-	(global_label "led3"
+	(global_label "led4"
 		(shape input)
 		(at 105.41 109.22 180)
 		(fields_autoplaced yes)
@@ -1878,7 +1892,7 @@
 			)
 			(justify right)
 		)
-		(uuid "d2e5729b-37b2-423b-ad38-f7a06ec6ee98")
+		(uuid "bb4acf93-c856-4ef0-b030-b9a08a8fe3b4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 98.3125 109.22 0)
 			(effects
@@ -1886,6 +1900,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "button4"
+		(shape input)
+		(at 140.97 105.41 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e16b9d0f-c5b7-45b8-9121-0e88d8a8b8f5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 151.2121 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
