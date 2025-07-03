@@ -1,14 +1,24 @@
-int BUT1 = D0;
-int BUT2 = D1;
-int BUT3 = D10;
-int BUT4 = D9;
+// buttons from left to right, top to bottom
+int BUT1 = D1;
+int BUT2 = D9;
+int BUT3 = D0;
+int BUT4 = D10;
 int buttons[4] = {BUT1, BUT2, BUT3, BUT4};
 
-int LED1 = D3;
-int LED2 = D4;
-int LED3 = D6;
-int LED4 = D5;
+// Button layout (with LEDs at the top)
+// 2 | 4
+// 1 | 3
+
+// LEDs from left to right, top to bottom
+int LED1 = D4;
+int LED2 = D5;
+int LED3 = D3;
+int LED4 = D6;
 int leds[4] = {LED1, LED2, LED3, LED4};
+
+// LED layout (with LEDs at the top)
+// 2 | 4
+// 1 | 3
 
 int pattern[10];
 int currentStep = 0;
@@ -17,6 +27,9 @@ void reaction();
 void duel();
 void memoryGame();
 void ledsOff();
+
+// define startTime
+unsigned long startTime;
 
 void setup() {
   pinMode(BUT1, INPUT);
@@ -31,10 +44,11 @@ void setup() {
 }
 
 void loop() {
+  // reaction
   if (digitalRead(BUT1) == HIGH){
     unsigned long pressedTime = millis();
     int currentLed = 0;
-    while (digitalRead(BUT2) == HIGH){
+    while (digitalRead(BUT1) == HIGH){
       if (millis() - pressedTime >= 750){
         if (currentLed > 3){
           ledsOff();
@@ -47,26 +61,11 @@ void loop() {
       }
     }
   }
-  if (digitalRead(BUT4) == HIGH){
+  // duel
+  if (digitalRead(BUT2) == HIGH){
     unsigned long pressedTime = millis();
     int currentLed = 0;
     while (digitalRead(BUT2) == HIGH){
-      if (millis() - pressedTime >= 750){
-        if (currentLed > 3){
-          ledsOff();
-          memoryGame();
-          break;
-        }
-        digitalWrite(leds[currentLed], HIGH);
-        currentLed++;
-        pressedTime = millis();
-      }
-    }
-  }
-  if (digitalRead(BUT1) == HIGH){
-    unsigned long pressedTime = millis();
-    int currentLed = 0;
-    while (digitalRead(BUT3) == HIGH){
       if (millis() - pressedTime >= 750){
         if (currentLed > 3){
           ledsOff();
@@ -79,9 +78,113 @@ void loop() {
       }
     }
   }
+  // memory game
+  if (digitalRead(BUT3) == HIGH){
+    unsigned long pressedTime = millis();
+    int currentLed = 0;
+    while (digitalRead(BUT3) == HIGH){
+      if (millis() - pressedTime >= 750){
+        if (currentLed > 3){
+          ledsOff();
+          memoryGame();
+          break;
+        }
+        digitalWrite(leds[currentLed], HIGH);
+        currentLed++;
+        pressedTime = millis();
+      }
+    }
+  }
+  // binary
+  if (digitalRead(BUT4) == HIGH){
+    unsigned long pressedTime = millis();
+    int currentLed = 0;
+    while (digitalRead(BUT4) == HIGH){
+      if (millis() - pressedTime >= 750){
+        if (currentLed > 3){
+          ledsOff();
+          binary();
+          break;
+        }
+        digitalWrite(leds[currentLed], HIGH);
+        currentLed++;
+        pressedTime = millis();
+      }
+    }
+  }
 
 }
 
+void binary(){
+  randomSeed(analogRead(A2));
+  int randNumber = random(15);
+  startTime = millis();
+
+  // showing binary
+  for (int i=0;i<4;i++){
+    digitalWrite(leds[i], (randNumber >> i) & 1); // shifts the bits of the number right by i and extracts the last bit using & 1 (which returns 0 or 1)
+    delay(150);
+  }
+  while(millis()-startTime < 5000);
+  for (int i=0;i<4;i++){
+    digitalWrite(leds[i], LOW);
+  }
+
+  int count = 0;
+  // input phase
+  while(true){
+    // top left-add 1
+    if (digitalRead(buttons[0])){
+      count += 1;
+      delay(20); // debounce
+    }
+    // top right-add 5
+    if (digitalRead(buttons[1])){
+      count += 5;
+      delay(20); // debounce
+    }
+    // bottom left-subtract 1
+    if (digitalRead(buttons[2])){
+      count -= 1;
+      delay(20); // debounce
+    }
+    // bottom right-submit
+    if (digitalRead(buttons[3])){
+      startTime = millis();
+      bool heldLongEnough;
+      while(millis()-startTime < 2000){
+        heldLongEnough = true;
+        if (!digitalRead(buttons[3])){
+          heldLongEnough = false;
+          break;
+        }
+      }
+      if (heldLongEnough){
+        delay(1000);
+        compare(count, randNumber);
+        break;
+      }
+    }
+  }
+}
+
+void compare(int c, int expected){
+  if (c == expected){
+    winFeedback();
+  }
+  else{
+    failFeedback();
+  }
+}
+
+  // - The LEDs will show a binary number for 5 seconds
+  // - When they turn off, you have to input that value using the keyboard
+  //   - Pressing the top left button adds 1
+  //   - Pressing the top right button adds 5
+  //   - Pressing the bottom left button subtracts 1
+  // - To submit your number, hold the bottom right button for 2 seconds
+  // - If you got it correct, the LEDs will all flash twice
+  // - If you got it wrong, they will flash one by one 2 times
 void ledsOff() {
   for (int i=0; i < 4; i++){
     digitalWrite(leds[i], LOW);
@@ -92,14 +195,12 @@ void reaction() {
   randomSeed(analogRead(A2));
   int randPin;
   int randTime;
-  digitalWrite(leds[randPin], HIGH);
-  long startTime; // what time did the led turn on?
   for (int i = 0; i < 5; i++){ // repeat 5 times
     randPin = random(4);
-    startTime = millis();
+    startTime = millis(); // what time did the led turn on?
     randTime = random(500,5000);
     delay(randTime);
-    while (abs(millis()-startTime) > 10000)){
+    while (millis()-startTime < 10000){
       for (int i=0;i<4;i++){
         if (digitalRead(buttons[i]) == HIGH){ // are one of the buttons pressed
           break; // exit the for loop
@@ -115,33 +216,33 @@ void reaction() {
 void duel(){
   randomSeed(analogRead(A2));
   const int maxScore = 5;
-  int p1Score = 0;
-  int p2Score = 0;
-  int rightLeds[2] = {LED1, LED2};
-  int leftLeds[2] = {LED3, LED4};
+  int p1Score = 0; // player 1 is on the left
+  int p2Score = 0; // player 2 is on the right
+  int leftLeds[2] = {LED1, LED3};
+  int rightLeds[2] = {LED2, LED4};
   while (p2Score < maxScore && p1Score < maxScore){
     int randIndex = random(2);
     delay(random(1000,4000));
 
-    digitalWrite(rightLeds[randIndex], HIGH);
     digitalWrite(leftLeds[randIndex], HIGH);
+    digitalWrite(rightLeds[randIndex], HIGH);
 
     int winner = waitForButton(randIndex);
 
-    digitalWrite(rightLeds[randIndex], LOW);
     digitalWrite(leftLeds[randIndex], LOW);
+    digitalWrite(rightLeds[randIndex], LOW);
 
     if (winner == 1) p1Score++;
     else if (winner == 2) p2Score++;
 
     delay(500);
   }
-  if (p1Score == maxScore) flashLeds(LED1, LED2);
-  else flashLeds(LED3, LED4);
+  if (p1Score == maxScore) flashLeds(leftLeds[0], leftLeds[1]);
+  else flashLeds(rightLeds[0], rightLeds[1]);
 
 }
 
-int flashLeds(L1, L2){
+void flashLeds(int L1, int L2){ // flash L1 and L2
   for (int i = 0; i < 6; i++) {
     digitalWrite(L1, HIGH);
     digitalWrite(L2, HIGH);
@@ -158,9 +259,8 @@ int waitForButton(int expected){
     for (int i = 0; i < 4; i++) {
       if (digitalRead(buttons[i]) == HIGH) {
         while (digitalRead(buttons[i]) == HIGH);  // wait for release
-        delay(20);  // debounce
 
-        if (i == expected || i == expected + 2) {
+        if (i == expected || i == expected + 1) { // if it is the expected led or the respective one on the other side
           return (i < 2) ? 1 : 2;  // buttons 0–1 → P1, 2–3 → P2
         } 
       }

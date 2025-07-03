@@ -6,7 +6,6 @@ A PCB that you can use to play minigames with 4 LEDs, 4 Cherry MX switches and a
 ### Reaction Tester
 - **Start**: Hold the top left button for 3 seconds (the LEDs will slowly light up as you hold it)
 - **How to Play**: An LED will turn on within 5 seconds, and you have to press the corresponding button as fast as possible.
-
 ### Duel
 - **Start**: Hold the top right button for 3 seconds (the LEDs will slowly light up as you hold it)
 - **Players**
@@ -17,11 +16,22 @@ A PCB that you can use to play minigames with 4 LEDs, 4 Cherry MX switches and a
   - A mirrored LED pair will light up (eg the top left and top right)
   - The first person who presses that switch wins and whoever gets to 5 wins first has their LEDs flash as celebration
 ### Memory Game
-- **Start**: Hold the bottom right button for 3 seconds (the LEDs will slowly light up as you hold it)
+- **Start**: Hold the bottom left button for 3 seconds (the LEDs will slowly light up as you hold it)
 - **How to Play**
   - The LEDs flash a sequence that you have to exactly recreate with the buttons
   - Each time you succeed, the length of the sequence increases
   - If you fail, the LEDs turn on and off 2 times, and if you win, they turn on one by one.
+### Binary
+- **Start**: Hold the bottom right button for 3 seconds (the LEDs will slowly light up as you hold it)
+- **How to Play**
+  - The LEDs will show a binary number for 5 seconds
+  - When they turn off, you have to input that value using the keyboard
+    - Pressing the top left button adds 1
+    - Pressing the top right button adds 5
+    - Pressing the bottom left button subtracts 1
+  - To submit your number, hold the bottom right button for 2 seconds
+  - If you got it correct, the LEDs will all flash twice
+  - If you got it wrong, they will flash one by one 2 times
 
 ## Files
 To program the XIAO RP2040, follow [this guide](https://wiki.seeedstudio.com/XIAO-RP2040-with-Arduino/) and open [this file](/firmware/treeboard/treeboard.ino) in the Arduino IDE.
