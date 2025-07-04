@@ -32,9 +32,11 @@ void reaction();
 void duel();
 void memoryGame();
 void binary();
+
+
 void startup();
 void ledsOff();
-void idle;
+void idle();
 
 // define startTime
 unsigned long startTime;
@@ -139,11 +141,11 @@ void loop() {
 void startup(){
   for (int i=0;i<STARTUPcycles;i++){
     for (int j=0;j<4;j++){
-      digitalWrite[startupLeds[j], HIGH];
+      digitalWrite(startupLeds[j], HIGH);
       delay(300);
     }
     for (int j=0;j<4;j++){
-      digitalWrite[startupLeds[j], LOW];
+      digitalWrite(startupLeds[j], LOW);
     }
   }
 }
@@ -225,14 +227,6 @@ void compare(int c, int expected){
   }
 }
 
-  // - The LEDs will show a binary number for 5 seconds
-  // - When they turn off, you have to input that value using the keyboard
-  //   - Pressing the top left button adds 1
-  //   - Pressing the top right button adds 5
-  //   - Pressing the bottom left button subtracts 1
-  // - To submit your number, hold the bottom right button for 2 seconds
-  // - If you got it correct, the LEDs will all flash twice
-  // - If you got it wrong, they will flash one by one 2 times
 void ledsOff() {
   for (int i=0; i < 4; i++){
     digitalWrite(leds[i], LOW);
@@ -243,6 +237,7 @@ void reaction() {
   randomSeed(analogRead(A2));
   int randPin;
   int randTime;
+  int time;
   for (int i = 0; i < 5; i++){ // repeat 5 times
     randPin = random(4);
     startTime = millis(); // what time did the led turn on?
@@ -251,6 +246,7 @@ void reaction() {
     while (millis()-startTime < 10000){
       for (int i=0;i<4;i++){
         if (digitalRead(buttons[i]) == HIGH){ // are one of the buttons pressed
+          time = millis()-startTime;
           break; // exit the for loop
         }
       }
@@ -258,7 +254,29 @@ void reaction() {
     delay(randTime);
   }
 
-  digitalWrite(leds[randPin], LOW);
+  ledsOff();
+
+  if (time < 230){
+    blink(100);
+  }
+  else if (time < 350){
+    blink(250);
+  }
+  else{
+    blink(400);
+  }
+}
+
+void blink(int time){
+  for (int i=0;i<4;i++){
+    for (int j=0;j<4;j++){
+      digitalWrite(leds[j], HIGH);
+    }
+    delay(time);
+    for (int j=0;j<4;j++){
+      digitalWrite(leds[j], LOW);
+    }
+  }
 }
 
 void duel(){
