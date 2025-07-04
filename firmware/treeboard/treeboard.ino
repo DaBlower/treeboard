@@ -1,3 +1,7 @@
+#define STARTUPcycles 3 // how many times does the startup loop?
+#define idleTime 60000
+
+
 // buttons from left to right, top to bottom
 int BUT1 = D1;
 int BUT2 = D9;
@@ -15,6 +19,7 @@ int LED2 = D5;
 int LED3 = D3;
 int LED4 = D6;
 int leds[4] = {LED1, LED2, LED3, LED4};
+int startupLeds[4] = {LED1, LED2, LED4, LED3};
 
 // LED layout (with LEDs at the top)
 // 2 | 4
@@ -26,10 +31,16 @@ int currentStep = 0;
 void reaction();
 void duel();
 void memoryGame();
+void binary();
+void startup();
 void ledsOff();
+void idle;
 
 // define startTime
 unsigned long startTime;
+
+// when the last input was received
+unsigned long lastInput;
 
 void setup() {
   pinMode(BUT1, INPUT);
@@ -41,11 +52,15 @@ void setup() {
   pinMode(LED2, OUTPUT);
   pinMode(LED3, OUTPUT);
   pinMode(LED4, OUTPUT);
+  analogWriteResolution(8);
+  lastInput = millis();
+  startup();
 }
 
 void loop() {
   // reaction
   if (digitalRead(BUT1) == HIGH){
+    lastInput = millis();
     unsigned long pressedTime = millis();
     int currentLed = 0;
     while (digitalRead(BUT1) == HIGH){
@@ -63,6 +78,7 @@ void loop() {
   }
   // duel
   if (digitalRead(BUT2) == HIGH){
+    lastInput = millis();
     unsigned long pressedTime = millis();
     int currentLed = 0;
     while (digitalRead(BUT2) == HIGH){
@@ -80,6 +96,7 @@ void loop() {
   }
   // memory game
   if (digitalRead(BUT3) == HIGH){
+    lastInput = millis();
     unsigned long pressedTime = millis();
     int currentLed = 0;
     while (digitalRead(BUT3) == HIGH){
@@ -97,6 +114,7 @@ void loop() {
   }
   // binary
   if (digitalRead(BUT4) == HIGH){
+    lastInput = millis();
     unsigned long pressedTime = millis();
     int currentLed = 0;
     while (digitalRead(BUT4) == HIGH){
@@ -112,7 +130,35 @@ void loop() {
       }
     }
   }
+  // idle animation
+  if (millis()-lastInput > idleTime){
+    idle();
+  }
+}
 
+void startup(){
+  for (int i=0;i<STARTUPcycles;i++){
+    for (int j=0;j<4;j++){
+      digitalWrite[startupLeds[j], HIGH];
+      delay(300);
+    }
+    for (int j=0;j<4;j++){
+      digitalWrite[startupLeds[j], LOW];
+    }
+  }
+}
+
+void idle(){
+  for (int i=0;i<4;i++){
+    for (int j=15;j<160;j++){
+      analogWrite(leds[i], j);
+      delay(10);
+    }
+    for (int j=160;j>15;j--){
+      analogWrite(leds[i], j);
+      delay(10);
+    }
+  }
 }
 
 void binary(){
@@ -166,6 +212,8 @@ void binary(){
       }
     }
   }
+  delay(2000);
+  ledsOff();
 }
 
 void compare(int c, int expected){
