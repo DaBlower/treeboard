@@ -33,6 +33,10 @@ A PCB that you can use to play minigames with 4 LEDs, 4 Cherry MX switches and a
   - If you got it correct, the LEDs will all flash twice
   - If you got it wrong, they will flash one by one 2 times
 
+## Other features
+### Idle
+After 30 seconds with no input, the LEDs will play a slow idle animation
+
 ## Files
 To program the XIAO RP2040, follow [this guide](https://wiki.seeedstudio.com/XIAO-RP2040-with-Arduino/) and open [this file](/firmware/treeboard/treeboard.ino) in the Arduino IDE.
 
